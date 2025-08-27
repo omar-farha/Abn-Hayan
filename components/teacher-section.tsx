@@ -99,7 +99,7 @@ export default function TeacherSection() {
         >
           <motion.div className="order-1 lg:order-2" variants={itemVariants}>
             <div className="relative group">
-              <div className="relative w-96 h-96 mx-auto">
+              <div className="relative w-96 h-96 mx-auto px-5 md:px-0">
                 {/* Glowing background effect */}
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-[60px] blur-2xl group-hover:blur-3xl transition-all duration-500"

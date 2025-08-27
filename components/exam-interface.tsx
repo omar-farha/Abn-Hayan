@@ -267,54 +267,6 @@ export function ExamInterface({
         </div>
       )}
       {/* Sidebar */}
-      <div className="w-64 bg-gradient-to-b from-gray-900 to-gray-800 border-r border-gray-700 p-5 overflow-y-auto shadow-xl">
-        <div className="mb-6">
-          <h3 className="text-lg font-semibold text-white mb-1">Questions</h3>
-          <p className="text-sm text-gray-400">
-            {getAnsweredCount()} of {totalQuestions} answered
-          </p>
-        </div>
-
-        {/* Question Buttons */}
-        <div className="grid grid-cols-4 gap-2">
-          {exam.questions.map((question, index) => {
-            const status = getQuestionStatus(question.id, index);
-            return (
-              <button
-                key={question.id}
-                onClick={() => handleQuestionJump(index)}
-                className={`w-10 h-10 rounded-lg text-sm font-semibold transition-all duration-200 shadow-sm
-              ${
-                status === "current"
-                  ? "bg-[#0fd8d7] text-black ring-2 ring-[#0fd8d7]/80"
-                  : status === "answered"
-                  ? "bg-green-600 text-white"
-                  : status === "flagged"
-                  ? "bg-yellow-500 text-black"
-                  : "bg-gray-700 text-gray-300 hover:bg-gray-600"
-              }`}
-              >
-                {index + 1}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Legend */}
-        <div className="mt-6 space-y-3 text-xs text-gray-400">
-          {[
-            { color: "bg-[#0fd8d7]", label: "Current" },
-            { color: "bg-green-600", label: "Answered" },
-            { color: "bg-yellow-500", label: "Flagged" },
-            { color: "bg-gray-700", label: "Unanswered" },
-          ].map((item) => (
-            <div key={item.label} className="flex items-center">
-              <div className={`w-3 h-3 rounded mr-2 ${item.color}`} />
-              {item.label}
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* Main Exam Area */}
       <div className="flex-1 flex flex-col">

@@ -265,7 +265,7 @@ export default function SessionPage({ params }: SessionPageProps) {
     : 0;
 
   return (
-    <div className="min-h-screen  bg-gradient-to-br from-blue-950 via-slate-900 to-black text-white">
+    <div className="min-h-screen bg-gradient-to-br from-blue-950 via-slate-900 to-black text-white overflow-x-hidden">
       {/* Animated background */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.1)_1px,transparent_1px)] bg-[size:50px_50px] animate-pulse"></div>
@@ -288,10 +288,10 @@ export default function SessionPage({ params }: SessionPageProps) {
         </>
       )}
 
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 opacity-30">
+      {/* <div className="absolute top-1/4 left-1/4 w-64 h-64 opacity-30">
         <div className="absolute inset-0 rounded-full border-2 border-blue-400 animate-ping"></div>
         <div className="absolute inset-4 rounded-full border border-cyan-300 animate-pulse"></div>
-      </div>
+      </div> */}
 
       <div className="absolute bottom-1/3 right-1/4 w-48 h-48 opacity-20">
         <div
@@ -313,11 +313,11 @@ export default function SessionPage({ params }: SessionPageProps) {
         {/* Header */}
         <Navbar />
 
-        <div className="container mx-auto py-8 px-5 md:px-7 lg:px-12">
+        <div className="container mx-auto py-8 px-4 md:px-7 lg:px-12">
           {/* Back Button */}
           <Link
             href={`/courses/${params.courseId}`}
-            className="inline-flex items-center text-[#0fd8d7] hover:text-[#0bc5c4] mb-8 transition-all duration-300 hover:transform hover:translate-x-1 animate-fade-in-up animation-delay-200"
+            className="inline-flex items-center text-[#0fd8d7] hover:text-[#0bc5c4] mb-6 md:mb-8 transition-all duration-300 hover:transform hover:translate-x-1 animate-fade-in-up animation-delay-200"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to {course.title}
@@ -325,17 +325,22 @@ export default function SessionPage({ params }: SessionPageProps) {
 
           {/* Session Header */}
           <div
-            className="mb-8 animate-fade-in-up animation-delay-400 mt-6"
+            className="mb-6 md:mb-8 animate-fade-in-up animation-delay-400 mt-10 md:mt-6"
             dir="ltr"
             lang="en"
           >
-            <div className="flex items-center justify-between mb-6">
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-white to-[#0fd8d7] bg-clip-text text-transparent">
-                {session.title}
-              </h1>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 md:mb-6 gap-4">
+              <div className="">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-white to-[#0fd8d7] bg-clip-text text-transparent text-left">
+                  {session.title}
+                </h1>
+                <p className="text-base md:text-xl text-gray-300 mb-4 md:mb-6 mt-2 leading-relaxed text-left">
+                  {session.description}
+                </p>
+              </div>
               <button
                 onClick={markSessionComplete}
-                className={`flex items-center px-6 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 ${
+                className={`flex items-center px-4 py-2 md:px-6 md:py-3 rounded-xl transition-all duration-300 transform hover:scale-105 w-auto justify-center ${
                   isSessionCompleted
                     ? "bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 shadow-lg shadow-green-500/30"
                     : "bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500"
@@ -349,25 +354,22 @@ export default function SessionPage({ params }: SessionPageProps) {
                 {isSessionCompleted ? "Completed" : "Mark Complete"}
               </button>
             </div>
-            <p className="text-xl text-gray-300 mb-6 leading-relaxed text-left">
-              {session.description}
-            </p>
 
             {/* Progress Tracker */}
-            <div className="bg-gradient-to-r from-gray-900/80 to-gray-800/40 rounded-xl p-6 border border-gray-700/50 backdrop-blur-sm animate-fade-in-up animation-delay-600">
-              <div className="flex items-center justify-between mb-4">
+            <div className="bg-gradient-to-r from-gray-900/80 to-gray-800/40 rounded-xl p-4 md:p-6 border border-gray-700/50 backdrop-blur-sm animate-fade-in-up animation-delay-600">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 md:mb-4 gap-2">
                 <span className="text-[#0fd8d7] font-semibold flex items-center">
-                  <Play className="w-5 h-5 mr-2" />
+                  <Play className="w-4 h-4 md:w-5 md:h-5 mr-2" />
                   Progress
                 </span>
-                <span className="text-gray-400">
+                <span className="text-gray-400 text-sm md:text-base">
                   {remainingSessions} session
                   {remainingSessions !== 1 ? "s" : ""} remaining
                 </span>
               </div>
-              <div className="bg-gray-800 rounded-full h-3 overflow-hidden">
+              <div className="bg-gray-800 rounded-full h-2 md:h-3 overflow-hidden">
                 <div
-                  className="bg-gradient-to-r from-[#0fd8d7] to-[#0bc5c4] h-3 rounded-full transition-all duration-1000 ease-out animate-progress-fill"
+                  className="bg-gradient-to-r from-[#0fd8d7] to-[#0bc5c4] h-2 md:h-3 rounded-full transition-all duration-1000 ease-out animate-progress-fill"
                   style={{
                     width: `${
                       ((currentSessionIndex + 1) / course.sessions.length) * 100
@@ -375,17 +377,17 @@ export default function SessionPage({ params }: SessionPageProps) {
                   }}
                 ></div>
               </div>
-              <div className="mt-2 text-sm text-gray-400">
+              <div className="mt-2 text-xs md:text-sm text-gray-400">
                 Session {currentSessionIndex + 1} of {course.sessions.length}
               </div>
             </div>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-6 md:gap-8">
             {/* Video Section */}
             <div className="lg:col-span-2 animate-fade-in-up animation-delay-800">
-              <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 rounded-xl overflow-hidden border border-gray-700/50 mb-8 backdrop-blur-sm hover:border-[#0fd8d7]/30 transition-colors duration-500">
-                <div className="h-[600px] bg-gradient-to-br from-gray-800 to-gray-900">
+              <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 rounded-xl overflow-hidden border border-gray-700/50 mb-6 md:mb-8 backdrop-blur-sm hover:border-[#0fd8d7]/30 transition-colors duration-500">
+                <div className="h-48 sm:h-64 md:h-80 lg:h-[600px] bg-gradient-to-br from-gray-800 to-gray-900">
                   {session.video_url ? (
                     <iframe
                       src={embedUrl}
@@ -397,11 +399,13 @@ export default function SessionPage({ params }: SessionPageProps) {
                   ) : (
                     <div className="flex items-center justify-center h-full group cursor-pointer">
                       <div className="text-center group-hover:scale-105 transition-transform duration-300">
-                        <div className="text-6xl mb-4 animate-pulse">🎥</div>
-                        <p className="text-gray-400 text-lg mb-2">
+                        <div className="text-4xl md:text-6xl mb-2 md:mb-4 animate-pulse">
+                          🎥
+                        </div>
+                        <p className="text-gray-400 text-sm md:text-lg mb-1 md:mb-2">
                           No video available yet
                         </p>
-                        <p className="text-sm text-gray-500 mt-2">
+                        <p className="text-xs md:text-sm text-gray-500 mt-1 md:mt-2">
                           Video will be added soon
                         </p>
                       </div>
@@ -410,12 +414,11 @@ export default function SessionPage({ params }: SessionPageProps) {
                 </div>
               </div>
 
-              {/* Assignment Section */}
               {/* Complete Session Button */}
               {!isSessionCompleted && (
                 <button
                   onClick={markSessionComplete}
-                  className="w-full bg-gradient-to-r from-[#0fd8d7] to-[#0bc5c4] text-black font-semibold py-4 px-6 rounded-xl hover:from-[#0bc5c4] hover:to-[#0fd8d7] transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[#0fd8d7]/30 animate-fade-in-up animation-delay-1600"
+                  className="w-full bg-gradient-to-r from-[#0fd8d7] to-[#0bc5c4] text-black font-semibold py-3 md:py-4 px-4 md:px-6 rounded-xl hover:from-[#0bc5c4] hover:to-[#0fd8d7] transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[#0fd8d7]/30 animate-fade-in-up animation-delay-1600"
                 >
                   Mark as Complete
                 </button>
@@ -423,43 +426,18 @@ export default function SessionPage({ params }: SessionPageProps) {
             </div>
 
             {/* Sidebar */}
-            <div className="lg:col-span-1 space-y-6 animate-fade-in-up animation-delay-1000">
-              {/* Progress */}
-              {/* {session.tasks && session.tasks.length > 0 && (
-                <div className="bg-gradient-to-r from-gray-900/80 to-gray-800/40 rounded-xl p-6 border border-gray-700/50 backdrop-blur-sm animate-fade-in-up animation-delay-1200">
-                  <h3 className="text-xl font-bold text-white mb-4">
-                    Progress
-                  </h3>
-                  <div className="mb-4">
-                    <div className="flex justify-between text-sm text-gray-400 mb-2">
-                      <span>Completed</span>
-                      <span>{progressPercentage}%</span>
-                    </div>
-                    <div className="bg-gray-700 rounded-full h-2">
-                      <div
-                        className="bg-gradient-to-r from-[#0fd8d7] to-[#0bc5c4] h-2 rounded-full transition-all duration-300"
-                        style={{ width: `${progressPercentage}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                  <p className="text-sm text-gray-400">
-                    {completedTasks.length} of {session.tasks.length} tasks
-                    completed
-                  </p>
-                </div>
-              )} */}
-
+            <div className="lg:col-span-1 space-y-4 md:space-y-6 animate-fade-in-up animation-delay-1000">
               {/* Tasks Checklist */}
 
-              <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 rounded-xl p-8 border border-gray-700/50 backdrop-blur-sm">
-                <h3 className="text-2xl font-semibold mb-6 text-[#0fd8d7] flex items-center">
-                  <div className="w-8 h-8 bg-gradient-to-r from-[#0fd8d7] to-[#0bc5c4] rounded-lg flex items-center justify-center mr-3">
+              <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 rounded-xl p-4 md:p-6 lg:p-8 border border-gray-700/50 backdrop-blur-sm">
+                <h3 className="text-xl md:text-2xl font-semibold mb-4 md:mb-6 text-[#0fd8d7] flex items-center">
+                  <div className="w-6 h-6 md:w-8 md:h-8 bg-gradient-to-r from-[#0fd8d7] to-[#0bc5c4] rounded-lg flex items-center justify-center mr-2 md:mr-3 text-xs md:text-base">
                     📝
                   </div>
                   Assignment
                 </h3>
-                <div className="space-y-6">
-                  <p className="text-gray-300 leading-relaxed">
+                <div className="space-y-4 md:space-y-6">
+                  <p className="text-gray-300 leading-relaxed text-sm md:text-base">
                     {session.assignment}
                   </p>
                 </div>
@@ -468,14 +446,14 @@ export default function SessionPage({ params }: SessionPageProps) {
           </div>
 
           {/* Navigation */}
-          <div className="flex justify-between mt-16 pt-8 border-t border-gray-800/50 animate-fade-in-up animation-delay-1400">
+          <div className="flex flex-col sm:flex-row justify-between mt-10 md:mt-16 pt-6 md:pt-8 border-t border-gray-800/50 animate-fade-in-up animation-delay-1400 gap-4 sm:gap-0">
             <div>
               {currentSessionIndex > 0 && (
                 <Link
                   href={`/courses/${params.courseId}/sessions/${
                     course.sessions[currentSessionIndex - 1].id
                   }`}
-                  className="inline-flex items-center text-[#0fd8d7] hover:text-[#0bc5c4] transition-all duration-300 hover:transform hover:translate-x-1 px-4 py-2 rounded-lg backdrop-blur-sm"
+                  className="inline-flex items-center justify-center text-[#0fd8d7] hover:text-[#0bc5c4] transition-all duration-300 hover:transform hover:translate-x-1 px-4 py-2 rounded-lg backdrop-blur-sm w-full sm:w-auto"
                 >
                   <ArrowLeft className="w-4 h-4 mr-2" />
                   Previous Session
@@ -488,7 +466,7 @@ export default function SessionPage({ params }: SessionPageProps) {
                   href={`/courses/${params.courseId}/sessions/${
                     course.sessions[currentSessionIndex + 1].id
                   }`}
-                  className="inline-flex items-center text-[#0fd8d7] hover:text-[#0bc5c4] transition-all duration-300 hover:transform hover:-translate-x-1 bg-gray-900/50 px-4 py-2 rounded-lg backdrop-blur-sm"
+                  className="inline-flex items-center justify-center text-[#0fd8d7] hover:text-[#0bc5c4] transition-all duration-300 hover:transform hover:-translate-x-1 bg-gray-900/50 px-4 py-2 rounded-lg backdrop-blur-sm w-full sm:w-auto"
                 >
                   Next Session
                   <ArrowLeft className="w-4 h-4 ml-2 rotate-180" />
