@@ -38,11 +38,14 @@ const rakkas = Rakkas({
   variable: "--font-rakkas",
 });
 export const metadata: Metadata = {
-  title: "أكاديمية الفيزياء - تعلم الفيزياء التفاعلية",
+  title: "منصة ابن حيان - الصف الثالث الثانوي",
   description:
     "اتقن علم الفيزياء مع دورات منظمة في الميكانيكا والكهرباء والضوء. دروس تفاعلية ومهام وتتبع التقدم.",
   themeColor: "#ffffff", // يخلي لون الثيم أبيض على كل الأجهزة
   colorScheme: "light", // يجبر المتصفح على استخدام Light Mode
+  icons: {
+    icon: "/logo22.png", // الأيقونة العادية
+  },
 };
 
 export default function RootLayout({
