@@ -280,32 +280,6 @@ export default function CoursePage({ params }: CoursePageProps) {
                     </Link>
 
                     {/* Video preview if available */}
-                    {isValidUrl(session.video_url) && (
-                      <div className="mt-4 rounded-lg overflow-hidden">
-                        {session.video_url?.includes("youtube.com") ? (
-                          <iframe
-                            src={`https://www.youtube.com/embed/${
-                              session.video_url.split("v=")[1]
-                            }`}
-                            className="w-full h-64"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                          ></iframe>
-                        ) : (
-                          <video
-                            controls
-                            className="w-full rounded-lg"
-                            onError={(e) =>
-                              console.error("Video load error:", e)
-                            }
-                          >
-                            <source src={session.video_url!} type="video/mp4" />
-                            Your browser does not support the video tag.
-                          </video>
-                        )}
-                      </div>
-                    )}
                   </div>
                 ))}
               </div>
