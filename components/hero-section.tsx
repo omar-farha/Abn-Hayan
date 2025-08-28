@@ -59,7 +59,7 @@ export default function HeroSection() {
 
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
         <div className="text-center max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
             <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent animate-pulse">
               Physics
             </span>

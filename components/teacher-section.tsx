@@ -89,7 +89,7 @@ export default function TeacherSection() {
 
       <div
         ref={ref}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative"
+        className="max-w-7xl mx-auto px-auto sm:px-6 lg:px-8 relative"
       >
         <motion.div
           className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
@@ -143,7 +143,7 @@ export default function TeacherSection() {
           </motion.div>
 
           <motion.div
-            className="order-2 lg:order-1"
+            className="order-2 lg:order-1 px-4 md:px-0"
             variants={containerVariants}
           >
             <motion.div className="mb-8" variants={itemVariants}>
@@ -171,7 +171,7 @@ export default function TeacherSection() {
                 >
                   سامح حيان
                 </h2>
-                <motion.div
+                {/* <motion.div
                   className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center"
                   animate={{ rotate: 360 }}
                   transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
@@ -193,7 +193,7 @@ export default function TeacherSection() {
                       opacity="0.3"
                     />
                   </svg>
-                </motion.div>
+                </motion.div> */}
               </motion.div>
             </motion.div>
 

@@ -60,7 +60,20 @@
     transform: translateY(-10px);
   }
 }
+html {
+  color-scheme: light;
+  -webkit-color-scheme: light;
+  background-color: #ffffff;
+}
 
+body {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+* {
+  forced-color-adjust: none; /* يمنع المتصفح يغير الألوان */
+}
 .menu-enter {
   animation: slideDown 0.3s ease-out forwards;
 }

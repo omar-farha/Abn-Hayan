@@ -41,6 +41,8 @@ export const metadata: Metadata = {
   title: "أكاديمية الفيزياء - تعلم الفيزياء التفاعلية",
   description:
     "اتقن علم الفيزياء مع دورات منظمة في الميكانيكا والكهرباء والضوء. دروس تفاعلية ومهام وتتبع التقدم.",
+  themeColor: "#ffffff", // يخلي لون الثيم أبيض على كل الأجهزة
+  colorScheme: "light", // يجبر المتصفح على استخدام Light Mode
 };
 
 export default function RootLayout({
